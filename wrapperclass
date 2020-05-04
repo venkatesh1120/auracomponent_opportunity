@@ -1,0 +1,30 @@
+public class layoutauraOppurtunitites {
+	
+    @auraEnabled
+    public static list<datawrap> getOppurtunity(){
+        list<datawrap> ndnd = new list<datawrap>();
+        list<Opportunity> nda=[select id,Name,Amount ,CloseDate, DeliveryInstallationStatus__c  From Opportunity limit 7]; 
+            integer count=0;
+            if(nda.size()!=null){
+                count=nda.size();
+            }
+        for(integer i=0;i<count;i++){
+            datawrap nda1 = new datawrap();
+            nda1.oppName=nda[i].Name;
+            nda1.oppAmount = nda[i].Amount; 
+            nda1.oppCloseDate=nda[i].CloseDate;
+            nda1.oppDeliveryInstall=nda[i].DeliveryInstallationStatus__c;
+            ndnd.add(nda1);
+        }
+        return ndnd;
+    }
+    public class datawrap{
+        
+        @auraEnabled public string oppName;
+        @auraEnabled public decimal oppAmount;
+		@auraEnabled public Date oppCloseDate;
+		@auraEnabled public string oppDeliveryInstall;        
+    }
+
+    
+}

@@ -1,0 +1,24 @@
+<aura:application extends="force:slds" controller="layoutauraOppurtunitites">
+    <aura:attribute name="Data" type="List"/>
+    <aura:attribute name="columns1" type="List"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doinit}"/>
+     
+    <lightning:layout multipleRows="true">
+        <lightning:layoutItem size="4">
+            
+            <div style="width:500px;margin-left:50px;margin-top:100px;border:1px solid green;">
+                <lightning:card title="Opportunities" iconName="standard:Opportunity">
+                    <lightning:datatable
+                                         keyField="id"
+                                         data="{! v.Data }"
+                                         columns="{! v.columns1 }"
+                                         hideCheckboxColumn="false"/>
+                </lightning:card>
+            </div>
+            
+            
+        </lightning:layoutItem>
+     
+    </lightning:layout>
+    
+</aura:application>
